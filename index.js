@@ -23,7 +23,6 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 async function run() {
     try {
-        await client.connect();
         const partsCollection = client.db('smart-car-DB').collection('parts');
         const ordersCollection = client.db('smart-car-DB').collection('orders');
         const userCollection = client.db('smart-car-DB').collection('users');
