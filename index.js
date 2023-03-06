@@ -63,7 +63,7 @@ async function run() {
 
         app.get('/parts/:id', async(req, res) =>{
             const id = req.params.id;
-            const query={_id: ObjectId(id)};
+            const query={_id: new ObjectId(id)};
             const part = await partsCollection.findOne(query);
             res.send(part);
         });
@@ -80,7 +80,7 @@ async function run() {
 
         app.delete('/parts/:id', async(req, res) =>{
             const id = req.params.id;
-            const query = {_id: ObjectId(id)};
+            const query = {_id: new ObjectId(id)};
             const result = await partsCollection.deleteOne(query);
             console.log('delete a camera', result);
 
@@ -90,7 +90,7 @@ async function run() {
         app.put('/parts/:id', async(req, res) =>{
             const id = req.params.id;
             const updatedPart = req.body;
-            const filter = {_id: ObjectId(id)};
+            const filter = {_id: new ObjectId(id)};
             const options = { upsert: true };
             const updatedDoc = {
                 $set: {
@@ -135,7 +135,7 @@ async function run() {
 
         app.get('/orders/:id', async(req, res) =>{
             const id = req.params.id;
-            const query={_id: ObjectId(id)};
+            const query={_id: new ObjectId(id)};
             const order = await ordersCollection.findOne(query);
             res.send(order);
         });
@@ -143,7 +143,7 @@ async function run() {
         //get orders my user email 
         app.delete('/orders/:id', async(req, res) =>{
             const id = req.params.id;
-            const query = {_id: ObjectId(id)};
+            const query = {_id: new ObjectId(id)};
             const result = await ordersCollection.deleteOne(query);
             console.log('delete a orders', result);
 
@@ -252,7 +252,7 @@ async function run() {
           app.patch('/orders/:id',  async(req, res) =>{
             const id  = req.params.id;
             const payment = req.body;
-            const filter = {_id: ObjectId(id)};
+            const filter = {_id: new ObjectId(id)};
             const updatedDoc = {
               $set: {
                 status: 'paid',
@@ -267,7 +267,7 @@ async function run() {
           app.put('/order/:id',  async(req, res) =>{
             const id  = req.params.id;
             const payment = req.body;
-            const filter = {_id: ObjectId(id)};
+            const filter = {_id: new ObjectId(id)};
             const updatedDoc = {
               $set: {
                 status: 'paid',
